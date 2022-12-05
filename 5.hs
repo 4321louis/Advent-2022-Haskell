@@ -1,4 +1,4 @@
---10:42-1:12(with much procrastination and wonderiing why foldr wasn't folding the right way)
+--10:42-1:11-1:12(with much procrastination and wonderiing why foldr wasn't folding the right way)
 import Data.List
 import Data.List.Split
 main :: IO ()
