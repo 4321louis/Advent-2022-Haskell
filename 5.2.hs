@@ -1,9 +1,7 @@
---10:42-1:11-1:12(with much procrastination and wonderiing why foldr wasn't folding the right way)
+--10:42-1:11(with much procrastination and wonderiing why foldr wasn't folding the right way)
 import Data.List
 import Data.List.Split
 main :: IO ()
--- main = readFile "in-5.txt" >>= print . map sum . transpose . map ((\[l1,h1,l2,h2]-> [fromEnum (l1<=l2&&h2<=h1||l2<=l1&&h1<=h2),fromEnum (l1<=h2&&h2<=h1||l2<=h1&&h1<=h2)]) . map (read::String->Int) . splitWhen (`elem` ",-")) . lines
-
 main = do 
     content <- readFile "in-5.txt"
     let [inBoxes,inMoves] = splitWhen (=="") $ lines content
@@ -14,7 +12,7 @@ main = do
     let movedBoxes2 = foldl (\boxes2 (a,f,t) -> let 
             toBoxes = boxes2 !! t
             (movedBoxes,rest) = splitAt a (boxes2 !! f) 
-            in replaceAt f rest . replaceAt t (movedBoxes++toBoxes) $ boxes2) boxes moves
+            in replaceAt f rest . replaceAt t (reverse movedBoxes++toBoxes) $ boxes2) boxes moves
     print movedBoxes2
     print $ map head movedBoxes2
 
