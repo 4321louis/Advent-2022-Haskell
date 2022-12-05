@@ -29,4 +29,4 @@ split c s = splitAt (head $ elemIndices c s) s
 --                 in (read e1f::Int,read e1b::Int,read e2f::Int,read e2b::Int))) [0,0] . lines
 
 -- mainOneLine :: IO ()
--- mainOneLine = readFile "in-4.txt" >>= print . map sum . transpose . map ((\[l1,h1,l2,h2]-> [fromEnum (l1<=l2&&h2<=h1||l2<=l1&&h1<=h2),fromEnum (l1<=h2&&h2<=h1||l2<=h1&&h1<=h2)]) . map (read::Int) . splitWhen (`elem` ",-")) . lines
+-- mainOneLine = readFile "in-4.txt" >>= print . map sum . transpose . map ((\[l1,h1,l2,h2]-> [fromEnum (l1<=l2&&h2<=h1||l2<=l1&&h1<=h2),fromEnum (l1<=h2&&h2<=h1||l2<=h1&&h1<=h2)]) . map (read::String->Int) . splitWhen (`elem` ",-")) . lines
