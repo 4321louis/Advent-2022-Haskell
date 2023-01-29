@@ -13,7 +13,7 @@ main = do
                 'S'->ord 'a'
                 'E'->ord 'z'
                 _->ord x)) ls
-    print $ fst . head . dropWhile (\(i,(_,coords))-> trace (show i ++ show coords) (findCoords ls 'E' `notElem` coords)) . zip [0..] $ iterate (findAdjacents rows) ([],[findCoords ls 'S'])
+    print $ fst . head . dropWhile (\(i,(_,coords))-> findCoords ls 'E' `notElem` coords) . zip [0..] $ iterate (findAdjacents rows) ([],[findCoords ls 'S'])
 
 
 
